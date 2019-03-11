@@ -21,8 +21,8 @@
     <div class="side-bar">
             <a  href="index.html"  class="rela-block caps side-header sidelink">Project Pages</a>
             <a href="smarthive.html" class="rela-block list-thing sidelink">Smart Hive</a>
-            <p class="rela-block list-thing">Autonomous Robot</p>
-            <p class="rela-block list-thing">EEE Rover</p>
+            <a href="autonomousrobot.html" class="rela-block list-thing sidelink">Autonomous Robot</a>
+            <a href="eeerover.html"class="rela-block list-thing sidelink">EEE Rover</a>
 
         <p class="rela-block caps side-header">Contact</p>
         <p>le1917@ic.ac.uk</p>
@@ -40,14 +40,16 @@
         
         
         <div class="section">
-                <img src="BeeMoreCropped.png" class="picture" alt="Robot" style="width:400px;">
-               
+                
                 <h3>Smart Hive (In Development)</h3>
                 
+                <img src="BeeMoreCropped.png" class="picture" alt="Robot">
+               
+
                 <p class="light">Connected bee hive monitoring system</p>
                 
                 <p class="justified"> 
-                        Bee population in the UK has dropped by one third in the past decade which has caused problems to both the environment and the agricultural industry. Beekeepers only have access to a limited amount of information on their hive’s health, as inspecting a hive too frequently disturbs the bees. Our project was to design an electronic hive monitoring system which can assist bee keepers in identifying and treating problems within the hive. Our system includes weight, activity, temperature and humidity sensing, as well as a heated frame in order to treat Varroa mites.</p>
+                        Beekeepers only have access to a limited amount of information on their hive’s health, as inspecting a hive too frequently disturbs the bees. Our project was to design an electronic hive monitoring system which can assist bee keepers in identifying and treating problems within the hive. Our system includes weight, activity, temperature and humidity sensing, as well as a heated frame in order to treat Varroa mites.</p>
                 <p class="light"> Team members: Joao Baptista, Noet Guisset, Edoardo David Santi, Albert Fleta Moya, Anselm Lohmann</p>
                 
                 <a class="contentlink" href="smarthive.html"> Learn More</a>
@@ -56,58 +58,29 @@
        <div class="section">
           
         <h3>Autonomous Robot    </h3>
-        <img src="Autonomous Robot Cropped.jpg" class="picture" alt="Robot" style="width:400px;">
+        <img src="Autonomous Robot Cropped.jpg" class="picture" alt="Robot">
         <p class="light">Self navigating robot design</p>
         
         <p class="justified">
-                
-            This was a personal project that I worked on at the end of High School. My goal was to build a robot
-            which could autonomously navigate between two
-            pre-defined points in an unknown environment.
-            The robot is configured with two driven wheels
-            and one free spinning wheel, which allows for easy
-            control and odometry. It uses quadrature encoders in
-            order to track its change in coordinates, and four
-            infrared sensors in order to take distance
-            measurements. There is an additional tactile sensor
-            covering the front face of the robot, which is was
-            implemented in order to safeguard against
-            unexpected collisions.
-            The wheel velocity and the robot’s direction
-            are both controlled using a PID algorithm. The robot
-            navigates through a state machine which combines
-            moving towards the target location, moving away
-            from obstacles, and following the nearest wall. There
-            is an additional collision avoidance routine, activated
-            by the front tactile sensor, which is set at a higher
-            priority to the navigation algorithm.</p>
-          
+                This was a personal project that I worked on at the end of High School. My goal was to build a robot which could autonomously navigate between two pre-defined points in an unknown environment.  The robot reads data from its wheel encoders, and uses distance sensors to gain information about its environment. It uses this information to follow a state machine and ultimately move to its target location.</p>
+        
+        
+                <a class="contentlink" href="autonomousrobot.html"> Learn More</a>
        </div>
        
        <div class="section">
-        <img src="EEERoverFront.jpg" class="picture" style="width: 400px;">
+   
         <h3>EEE Rover</h3>
+        <img src="EEERoverFront.jpg" class="picture">
         <p class="light"> A rover designed to detect signals for first year competition</p>
         <p class="justified">This rover was built as an entry to our University’s Rover design challenge. In groups of
                 six we were asked to design and build a remote controlled rover which could navigate
                 across an obstacle-filled arena in order to identify unknown “elements”. The “elements”
                 were PVC tubes which emitted different radio, infrared, and magnetic signals with
                 different baseband and carrier frequencies.
-                We designed several breadboard amplifying and filtering circuits, a Bluetooth
-                communication system, as well as an Android phone based user interface. My primary
-                technical role was to design the infrared sensor circuit as well as to write the Arduino
-                code.
-                This was my first time working with
-                op-amps without a negative supply
-                voltage, and biasing the signal
-                proved a fun challenge. The final
-                circuit converted sensor signal into
-                a digital 5 volt signal that is resistant
-                to changes in ambient lighting. The
-                Arduino microprocessor reads the
-                signal with an interrupt input pin,
-                and identifies its frequency using an
-                ISR.</p>
+               </p>
+
+               <a class="contentlink" href="eeerover.html"> Learn More</a>
             
             </div>
 

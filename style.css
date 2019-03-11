@@ -12,7 +12,7 @@
     color:#98D5D6;
   }
   .contentlink{
-    margin-left:300px;
+    margin-left:250px;
     margin-top: 80px;
     text-align: center;
 
@@ -55,10 +55,10 @@
   }
 
   .picture {
+        width:450px;
         float: right;
         margin-left: 60px; 
-        margin-top: 100px;
-        margin-left: 60px;  
+        margin-top: 0px;
         border-radius: 20px;
         border-style: solid;
         border-color: #888;
@@ -73,7 +73,7 @@
 
   .section{
       height:fit-content;
-      min-height: 80%;
+      min-height: 70%;
       margin-bottom: 20%;
       
   }
@@ -186,16 +186,18 @@
     position: absolute;
     margin: false;
     top: false;
-    left: calc(350px + 5%);
+    left: calc(250px );
     right: 0;
     bottom: 0;
     height: 120px;
     text-align: center;
-    font-family: 'Raleway';
     font-size: 48px;
     letter-spacing: 12px;
+    /*font-family: 'Raleway';
+    
+    
     font-weight: 100;
-    line-height: 60px;
+    line-height: 60px;*/
   }
   .name div {
     width: 94%;
