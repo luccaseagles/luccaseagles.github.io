@@ -36,55 +36,92 @@
         <div class="rela-block separator"></div>
        
         <div class="rela-block caps greyed">Sun Tracking Solar Panel</div>
-        <h4>Solar Panels in Brazil in General</h4>
-        <p>
-        I arrived at Ilha Solteira and was introduced to the renewable energy laboratory. I was able to use a workshop at the back of the building, which doubled as model off grid house. The house included two large solar panels, and a large power bank from car batteries which stored the energy.
-        </p>
-        <img src="workshop.jpg" style="width: 400px;" class="bigpicture"> 
-
-        <p>
-        I learned that in most Brazilian states, due to the current rules for distributed generation, there are very profitable incentives for energy fed into the grid. As such, hybrid solar systems (where households use their own energy, and feed the surplus into mains) are non-existent. However, this could change quickly, as it is currently uncertain whether Bolsonaro will maintain the same rates.  
-        </p>
+        
+        <h4>Brazil Distributed Photovoltaics Economics</h4>
+        
         <img src="solarpanorama.jpg" style="width: 800px;" class="bigpicture"> 
+       
+        <p>
+         Over the course of my internship, from research and from conversations with my supervising professor, I received some interesting insights into the realities of implementing distributed photovoltaics in Brazil. I’ve written down a few here:
+        </p>
+        
+        <p>
+                I was initially very interested in hybrid solar systems, which mesh energy from mains and solar power banks depending on capacity and user demand [2]. These can be very economic when the cost of consuming power is much higher than the return from power generation. However, I learned that in most Brazilian states, due to the current rules for distributed generation, these systems are virtually nonexistent, as there are very profitable incentives for energy fed into the grid [3]. This could change, as it is currently uncertain whether Bolsonaro will maintain the current government subsidies.
+        </p>
+        
 
         <p>
-            However, photovoltaics are also seen as a solution to providing energy in remote areas that lack grid access. Here, systems are more expensive, as they require a full power banks to store energy for periods without sunlight. These systems could both be applied to communities, or as solutions to industries such as mining.
+                In Brazil, photovoltaics are also seen as a solution to providing energy in remote areas that lack grid access. Here, systems are more expensive, as they require a full power banks to store energy for periods without sunlight. These systems could both be applied to communities, or as solutions to industries such as mining.
         </p>
 
         <p>
-            It was very interesting to witness the real world challenges of using this technology, especially in the tropical climate. During this period, for instance, there was an explosion of one of the car batteries in the back of the model house. I am not sure what exactly caused the explosion; however, the town experience rapid temperature shifts from 14 degrees to 39 degrees, and periods of incredibly high humidity, which played a large contribution. Moreover, in the last week there was a storm with ferocious wind surges, which knocked down several of the solar panels (including my project) around the university. These large solar panels, when positioned against the wind, act like a giant kites and can create massive forces.
+                It was very interesting to witness how this technology responded to a tropical climate. During my internship period, for instance, there was an explosion of one of the car batteries in the back of the model house. I am not sure what exactly caused the explosion; however, the town experienced rapid temperature shifts from 14 degrees to 39 degrees, and periods of incredibly high humidity, which I am sure played a large contribution. This means that batteries used in an off-grid system may have a much shorter lifetime than expected – reducing system cost effectiveness.
+        </p>
+        
+        <p>
+                Furthermore, in the last week there was a storm with ferocious wind surges, which knocked down several of the solar panels (including my project) around the university. These panels were oriented against the wind, and acted like a giant kites causing damage to their supporting structures. Aside from cheaper installation, this is another reason why panels are fixed directly to house rooves – when the panels are flush against them they are more protected from the wind. However, houses are not always positioned in the correct angle to receive the most sunlight, as such there can be a reduction in energy output.
         </p>
 
-        <h4>My Project</h4>
+        <p>
+            	I also learned how many complications go into calculating system pay-off time. For instance, if you believe your system pays off in 15-20 years, then you run into a bit of a challenge. While your panels (without wind damage) can function well for 25 years, your standard inverter has a much shorter lifetime (around 10 years), which means it will have to be replaced [4]. It is possible to find expensive inverters with 25 year warranties, however, this is does not usually make financial sense. You can assume that due to innovations, market inverters in 10 years will be cheaper and more efficient, making replacement advantageous.
+        </p>
+
+      
+       
+       
+
+        <h4>Project Overview</h4>
         <img src="dualsolar.JPG" style="width: 400px;" class="bigpicture"> 
 
         <p>
-            I was given access to a small scale, dual-axis solar panel. This panel had a stand and was actuated by two motors: one motor rotated the pitch of the panel with two chained gears, and another motor rotated the yaw of the panel through a rotating rod. The university had a power supply, H-bridge, Arduino, and a set of light dependent resistors. I was encouraged to develop this system, and I was curious about fuzzy logic, even though I didn’t know what it was. I found several research paper which had combined fuzzy logic with solar panel tracking, and started recreating them.
+                I was tasked to develop sun tracking software for dual axis solar panel at the UNESP Renewable Energy Laboratory. I was able to use four light dependent resistors (LDRs) mounted on a breadboard in order to track the direction of the sunlight. However, each LDR had a completely different response to varying brightness, making it incredibly difficult to track the sun with a linear controller. I realized this problem was not case specific, each LDR has a different light response due to manufacturing variability.</p>
+        
+        <p>
+                My solution was to apply a simple fuzzy logic based controller. Fuzzy logic is more flexible, in that each logic variable can have a unique membership function. I took advantage of this to define “bright” uniquely for each LDR depending on its calibrated response. I then applied for simple rules: 
         </p>
-        <img src=".JPG" style="width: 400px;" class="bigpicture"> 
+        
+        <table>
+            <tr>
+                <th> Antecedent</th>
+                <th> Concequent</th>
+            </tr>
+            <tr>
+                <td>If east bright and west dark,</td>
+                <td> then rotate east</td>
+            </tr>
+            <tr>
+                <td>If east dark and west bright,</td>
+                <td> then rotate west</td>
+            </tr>
+            <tr>
+                    <td>If north bright and south dark,</td>
+                    <td> then rotate north</td>
+                </tr>
+                <tr>
+                    <td>If north dark and south bright,</td>
+                    <td> then rotate south</td>
+                </tr>
+
+
+        </table>
 
         <p>
-                I decided I would start by setting up the components to create the most straightforward system and develop it from there. I was able control the motors correctly, and I was able to create a theoretically functional light tracker (just find the error between respective LDR sensors). However, I quickly realized a problem. Each LDR, based on the way they were setup (quite crudely), had completely different light responses. They had completely different response curves to varying light conditions. Thus, even if I carefully compensated each LDR to have the same value with the same light, as soon as the average light intensity increased, their values would diverge. This led to a problematic behavior: if I applied a simple PID controller to the solar panel on an overcast day, then the panel would continue to rotate without finding the sun. This solution presented a great opportunity to implement fuzzy logic, which I believe solves the problems well.
-        </p>
-
+               My solution also involved establishing a communication protocol between the computer and the microcontroller. Furthermore, I coded the fuzzy logic backend from scratch in Python, primarily for my own learning experience.        </p>
         <p>
-                I calibrated each LDR to have its own membership function for “bright” and “dark”, with the two being vertical reflections of each other. This meant that each of the sensors could have a completely different response, and the values could still be compared! I then used four simple rules to control the panel:  
-        </p>
-        <img src="sensor.JPG" style="width: 400px;" class="bigpicture"> 
-        <p>
-                I then created my own classes to perform fuzzy logic in Python. I know that there are a lot of libraries with the same functionality, however, I created my own library to make sure I understood fuzzy logic correctly. I used lists variables with a pre-defined domain as the basis for the fuzzy sets, and I only implemented the most basic methods for the operators: “and” as minimum, “or” as maximum, and defuzzification using the center of gravity method. I created a rule class, and some simple functions for generating different membership functions.
-        </p>
-
-        <p>
-            	I established communication between the Arduino and my computer using the “Pyserial” library. The Arduino ran as a slave, rotating in different directions based on different input chars, and outputting sensor data when requested. I then combined everything in a simple test projects. Unfortunately, I did not have a precise way of generating the membership functions for each sensor. Thus, my solution was to take samples for several seconds, moving the sensor into light and dark spots, and record the maximum and minimum values. The program then used these values to generate a ramp up “bright” function.
-        </p>
-
-        <p>
-                Success… somewhat. The solar panel tracked the sun, but only when the light conditions were constant. For this to work as I predicted, I would need an exact way of calibrating the functions: I imagine a test bench with a very powerful, variable brightness lamp. I would use this to make and record analogue measurement for incremental brightness changes.
-        </p>
-
-             
+                As a side note, dual axis solar panels currently cost around twice as much as fixed mounted systems, but only provide an extra 40% increase in energy production [1]. Thus, adding an extra panel has the same cost as a dual-axis system, but provides an extra 100% increase in energy production, making it a clear winner. Dual axis panels could be important in specialized, space limited cases. For instance, they could be used on satellites, or in robotic applications.
+      
+                <h4> References: </h4>
+        
+                <ul>
+                    <li> [1] https://www.solarreviews.com/blog/are-solar-axis-trackers-worth-the-additional-investment</li>
+                    <li> [2]https://www.ecoelectric.com.au/hybrid-solar-systems/ </li>
+                    <li> [3] https://news.energysage.com/important-warranties-solar-installation/ </li>
+                    <li>  [4] http://www.solarmango.com/ask/2015/09/28/what-is-the-lifetime-of-solar-inverters/ </li>
+                </ul>
        </div>
+
+      
+       
 
 
 
