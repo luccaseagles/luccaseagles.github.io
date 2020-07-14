@@ -1,0 +1,123 @@
+
+
+<head>
+        <title>luccaseagles.github.io</title>
+    </head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- FONTS -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+<!-- PAGE STUFF -->
+<body>
+<div class="rela-block page">
+    <div class="rela-block top-bar">
+        <div href="index.html" class="caps name"><div class="abs-center">Luccas Eagles</div></div>
+    </div>
+    <div class="side-bar">
+        <a  href="index.html"  class="rela-block caps side-header sidelink">Project Pages</a>
+        <a href="collabor8.html" class="rela-block list-thing sidelink">Cobot R&D</a>
+        <a href="smartscale.html" class="rela-block list-thing sidelink">Smart Scale</a>
+        <a href="solar.html" class="rela-block list-thing sidelink">Solar Panel</a>
+        <a href="https://beeyond505435608.wordpress.com/our-product/" class="rela-block list-thing sidelink">Beehive Monitoring</a>
+            
+        <p class="rela-block caps side-header">Contact</p>
+        <p>le1917@ic.ac.uk</p>
+        <p>+44 7532 823544</p>
+        <p>54 Killowen Old Rd, Newry, BT34 3AE  </p>
+      
+     
+    </div>
+    
+    <div class="rela-block content-container">
+        <h3 class="rela-block caps title">Undergraduate Electrical and Electronic Engineering</h3 >
+        <div class="rela-block separator"></div>
+       
+        <div class="rela-block caps greyed">Intel Collaborative Robots</div>
+        
+        <h4>Video Demo</h4>
+        
+        <iframe class = "video" width="550" height="281"  src="https://www.youtube.com/embed/PYo3XcNqvu4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h4>Collaborative Robots in Industry</h4>
+        
+        <p>
+            Collaborative Robots or Cobots are robots that can work alongside humans safely. Current non-collaborative industrial robots rely on complete separation from their human counterparts, requiring expensive perimeter fences. Collaborative robots can work right next to humans without any protective barriers. However, making a powerful industrial robot arm safe is a challenging task.
+        </p>
+
+        <p>
+            Standard industrial robots like ones made by Universal Robots, ABB, and Fanuc do not prevent collisions, and instead reduce the speed and power of robots so that a collision is not harmful with to the user. This is not ergonomic, and it restricts the productivity of human workers.
+        </p>
+        
+        <h4>Our Work</h4>
+        <p>For collaborative robots, there is one important International Standards Organization Technical Specification (ISO-TS 15066)  which defines a method called speed and separation monitoring (SSM). This method states a minimum separation distance S which if crossed, causes the robot to stop.</p>
+        <p>There are 4 factors which affect the separation distance: </p>
+        <ul>
+            <li>The speed of the user</li>
+            <li>The robot’s reaction time</li>
+            <li>The robot’s stopping distance </li>
+            <li>The error in measuring user’s and the human’s position</li>
+        </ul>
+
+        <p>
+            Unfortunately, calculating a robot arm’s position and velocity requires complex algorithms with long computation times. However, fast reaction times enable robots to work within centimeters of workers instead of several meters. Our work targets this issue and identifies how these calculations can be made efficiently and in parallel on an FPGA.
+        </p>
+      
+       <p>
+           We delivered 3 products as communicated to Intel on the Deliverables Proposal:
+       </p>
+
+       <ol>
+           <li>
+            A Feasibility Study which explores the engineering challenges and financial incentives of developing collaborative robots.    
+           </li>
+           <li>
+            A Speed and Separation monitoring (SSM) Simulation on MATLAB.
+           </li>
+           <li>
+            Final Report which covers the algorithms used within the simulation and details how this can be implemented efficiently and in parallel on an FPGA. Moreover, this report covers alternative methods to the ones implemented in the simulation.
+           </li>
+       </ol>
+
+       <h4>Our Collaboration with Intel</h4>
+
+       <p>
+        Intel's end goal is to provide robot manufacturers with a full suite of tools to implement safety-standard compliant Cobots. This includes the processing hardware (Intel FPGAs), IP core components, and libraries.​
+       </p>
+       <p>
+        The mission for Collabor8 is to execute the initial step of this long-term project, which is to conduct extensive research for various methods as well as simulating potential solutions on virtual robotic arms.   ​
+       </p>
+       
+       <h4>Individual Contribution</h4>
+
+       <p>
+        I had two primary technical roles within this project:
+       </p>
+
+       <ol>
+           <li>Developing the “theoretical” robot stopping script.</li>
+           <li>Deriving and upper bound on robot position uncertainty</li>
+       </ol>
+
+       <p>
+        Our ultimate technical goal was to simulate a robot that could perform a safety stop according to the ISO safety documents. To do this efficiently we split the team into two groups: one group focused on developing a function which takes the input angles and velocities of all of the robot joints, the position of the user, and outputs a flag when the robot needs to stop. The second group developed the simulation and integrated this function with a FANUC robot model.
+       </p>
+       <p>
+        I developed the function which stops the robot when the minimum distance threshold is exceeded. To do this the pose of the robot needs to be calculated by applying matrix transform for each link of the robot arm chain. Once the pose is found, the minimum distance needs to be calculated based on each link. This is done by modelling each link as a “capsule” and finding the minimum distance based geometric calculations. Finally the minimum separation distance can be found by using the kinematics of the robot’s stopping distance based on its current speed.
+       </p>
+
+       <p>
+        Secondly, I derived an upper bound on the robot’s position uncertainty. This is important as ISO-TS 15066 uses the position uncertainty in calculating the threshold distance. Moreover, Intel wants to implement this on an FPGA in which the numerical representation can dramatically affect computation time. The derived upper bound is as follows:
+       </p>
+
+       <img src="Formula.png" style="width:250px;" class="bigpicture" alt="Robot">
+
+       <p>
+        In which L_r is the length of the robot arm, the DOF is the number of degrees of freedom and p is the precision used on computation.
+           </p>
+
+</div>
+</body>

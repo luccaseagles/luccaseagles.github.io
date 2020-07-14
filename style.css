@@ -32,6 +32,11 @@
     margin: auto;
 
   }
+
+  .blurb{
+    padding-top: 30px;
+  }
+
   .floated {
     display: inline-block;
     position: relative;
@@ -41,37 +46,73 @@
 
   .section{
     height:fit-content;
-    min-height: 70%;
+    min-height: 80%;
     margin-bottom: 20%;
+}
+
+.bio{
+  height:fit-content;
+  min-height: 45%;
+  margin-bottom: 20%;
+  
 }
 
   .imgdesc-grid{
     width: 100%;
     display: grid;
-    grid-template-columns: auto auto ;
+
+    grid-template-columns: 55% 45% ;
   }
+
+  .main-text{
+    position: relative;
+  }
+
+  .video {
+    display: block;
+    margin-left: auto;   /* Automatic margin from left */
+    margin-right: auto; /* Automatic margin from right */
+ 
+
+  }
+
   /*EACH DESCRIPTION SECTION*/
   .picture {
         width:100%;
         float: right;
         margin-left: 60px; 
-        margin-top: 0px;
+        margin-top: 30;
         border-radius: 20px;
         border-style: solid;
         border-color: #888;
         border-width: 1px;
+
   }
+
+  .biopicture {
+    width:100%;
+    float: right;
+    margin-left: 60px; 
+    margin-top: 30;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #888;
+    border-width: 1px;
+
+}
+
+
 
   .description {
     float:left;
-    width: 100%;
+    width: 80%;
   }
   
   .contentlink{
     text-align: center;
     position: relative;
     width:120px;
-    padding: 8px;
+
     
     color:#98D5D6;
     font-size: 18px;
@@ -188,7 +229,7 @@
   }
   .top-bar {
     height: 220px;
-    background-color: #98D5D6;
+    background-color: #0059b3;
     color: #fff;
     
   }
@@ -224,7 +265,7 @@
     right: false;
     bottom: 0;
     width: 230px;
-    background-color:#F2EDD7;
+    background-color:#b3d9ff;
     padding: 320px 30px 50px;
   }
   .social {
